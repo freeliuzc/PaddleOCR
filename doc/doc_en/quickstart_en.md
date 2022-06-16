@@ -3,14 +3,15 @@
 **Note:** This tutorial mainly introduces the usage of PP-OCR series models, please refer to [PP-Structure Quick Start](../../ppstructure/docs/quickstart_en.md) for the quick use of document analysis related functions.
 
 - [1. Installation](#1-installation)
-    - [1.1 Install PaddlePaddle](#11-install-paddlepaddle)
-    - [1.2 Install PaddleOCR Whl Package](#12-install-paddleocr-whl-package)
+  - [1.1 Install PaddlePaddle](#11-install-paddlepaddle)
+  - [1.2 Install PaddleOCR Whl Package](#12-install-paddleocr-whl-package)
+  - [1.3 Use PaddleOCR with Docker](#13-use-paddleocr-with-docker)
 - [2. Easy-to-Use](#2-easy-to-use)
-    - [2.1 Use by Command Line](#21-use-by-command-line)
-      - [2.1.1 Chinese and English Model](#211-chinese-and-english-model)
-      - [2.1.2 Multi-language Model](#212-multi-language-model)
-    - [2.2 Use by Code](#22-use-by-code)
-      - [2.2.1 Chinese & English Model and Multilingual Model](#221-chinese--english-model-and-multilingual-model)
+  - [2.1 Use by Command Line](#21-use-by-command-line)
+    - [2.1.1 Chinese and English Model](#211-chinese-and-english-model)
+    - [2.1.2 Multi-language Model](#212-multi-language-model)
+  - [2.2 Use by Code](#22-use-by-code)
+    - [2.2.1 Chinese & English Model and Multilingual Model](#221-chinese--english-model-and-multilingual-model)
 - [3. Summary](#3-summary)
 
 
@@ -56,6 +57,18 @@ pip install "paddleocr>=2.0.1" # Recommend to use version 2.0.1+
   ```bash
   pip3 install -U https://paddleocr.bj.bcebos.com/whl/layoutparser-0.0.0-py3-none-any.whl
   ```
+
+<a name="13-use-paddleocr-with-docker"></a>
+
+### 1.3 Use PaddleOCR with Docker
+
+> If you  do not have a Docker environment, please refer to [Docker](https://www.docker.com/).
+
+PaddleOCR provides built docker images with latest code. All you have to do is to **pull the docker image **and **run the docker image**. Then you can enjoy PaddleOCR without any extra action.
+
+Get these images and guidance in [docker hub](https://hub.docker.com/repository/docker/paddlecloud/paddleocr), including CPU, GPU, ROCm environment versions. 
+
+If you have some customized requirements about automatic building docker images, you can get it in github repo [PaddlePaddle/PaddleCloud](https://github.com/PaddlePaddle/PaddleCloud/tree/main/tekton).
 
 <a name="2-easy-to-use"></a>
 
@@ -121,11 +134,12 @@ If you do not use the provided test image, you can replace the following `--imag
 
 **Version**
 paddleocr uses the PP-OCRv3 model by default(`--ocr_version PP-OCRv3`). If you want to use other versions, you can set the parameter `--ocr_version`, the specific version description is as follows:
-|  version name |  description |
-|    ---    |   ---   |
-| PP-OCRv3 | support Chinese and English detection and recognition, direction classifier, support multilingual recognition |
-| PP-OCRv2 | only supports Chinese and English detection and recognition, direction classifier, multilingual model is not updated |
-| PP-OCR   | support Chinese and English detection and recognition, direction classifier, support multilingual recognition |
+
+| version name | description                                                  |
+| ------------ | ------------------------------------------------------------ |
+| PP-OCRv3     | support Chinese and English detection and recognition, direction classifier, support multilingual recognition |
+| PP-OCRv2     | only supports Chinese and English detection and recognition, direction classifier, multilingual model is not updated |
+| PP-OCR       | support Chinese and English detection and recognition, direction classifier, support multilingual recognition |
 
 If you want to add your own trained model, you can add model links and keys in [paddleocr](../../paddleocr.py) and recompile.
 
@@ -145,6 +159,7 @@ paddleocr --image_dir ./doc/imgs_en/254.jpg --lang=en
     <img src="../imgs_en/254.jpg" width="300" height="600">
     <img src="../imgs_results/multi_lang/img_02.jpg" width="600" height="600">
 </div>
+
 The result is a list, each item contains a text box, text and recognition confidence
 
 ```text
@@ -168,6 +183,7 @@ A list of all languages and their corresponding abbreviations can be found in [M
 <a name="22-use-by-code"></a>
 
 ### 2.2 Use by Code
+
 <a name="221-chinese---english-model-and-multilingual-model"></a>
 
 #### 2.2.1 Chinese & English Model and Multilingual Model
@@ -211,6 +227,7 @@ Visualization of results
 <div align="center">
     <img src="../imgs_results/whl/12_det_rec.jpg" width="800">
 </div>
+
 
 
 <a name="3"></a>
